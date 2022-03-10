@@ -31,3 +31,5 @@ const sampleReportSchema=new Schema({
 
 })
 module.exports=mongoose.model('sampleDetails',sampleReportSchema)
+
+//sampleDetails where all collections present

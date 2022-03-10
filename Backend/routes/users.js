@@ -15,7 +15,7 @@ UserRouter.post('/login',userController.login)
 UserRouter.get('/users', userController.getAllSamples);
 
 // UserRouter.get('/getUser/:_id',UserController.getUser)
-UserRouter.get('/getUser/:_id',userController.getUser)
+UserRouter.get('/getUser/:_id',auth.authorizeAdmin,userController.getUser)
 UserRouter.put('/getUser',userController.getUsers)
 UserRouter.post("/getUser",userController.getUsers)
 

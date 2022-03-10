@@ -38,15 +38,14 @@ const register=async(req, res, next) => {
         const login=async(req, res, next) => {
             let{email,password}=req.body
             try{
-                const userData= await userModel.findOne({email}).lean()
+                const userData= await userModel.findOne({email}).lean()  //without parsing we get the elements
                 if(userData){
                     let{fname,role}=userData
                     const isPasswordMatch=await bcrypt.compare(password, userData.password)
 
                     if(isPasswordMatch){
                         const payload={fname,role}
-                        const token=await jwt.sign(payload,SECRET_KEY,{
-                            expiresIn:"5h"
+                        const token=await jwt.sign(payload,SECRET_KEY,{ //token generated actually here                            expiresIn:"5h"
                         })
                         res.status(200).json({
                             error:false,
